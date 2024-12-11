@@ -66,6 +66,6 @@ Refer to the detailed guide provided in the project for setting up your database
 If you would like to contribute to this project, feel free to fork the repository, create a new branch, and submit a pull request. Please ensure your code adheres to the coding guidelines and includes proper documentation.
 
 ## License:
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+This project is licensed under the MIT License [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
