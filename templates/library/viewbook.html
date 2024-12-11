@@ -1,0 +1,187 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>BookEase - Available Books</title>
+    <style media="screen">
+      table.redTable {
+        border: 2px solid #1a0575;
+        background-color: #ffffff;
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+      }
+      table.redTable td, table.redTable th {
+        border: 1px solid #AAAAAA;
+        padding: 3px 2px;
+      }
+      table.redTable tbody td {
+        font-size: 18px;
+      }
+      table.redTable tr:nth-child(even) {
+        background: #bee1e4;
+      }
+      table.redTable thead {
+        background: #1a0575;
+      }
+      table.redTable thead th {
+        font-size: 19px;
+        font-weight: bold;
+        color: #FFFFFF;
+        text-align: center;
+        border-left: 2px solid #1a0575;
+      }
+      table.redTable thead th:first-child {
+        border-left: none;
+      }
+      table.redTable tfoot {
+        font-size: 13px;
+        font-weight: bold;
+        color: #FFFFFF;
+        background: #1a0575;
+      }
+      table.redTable tfoot td {
+        font-size: 13px;
+      }
+      table.redTable tfoot .links {
+        text-align: right;
+      }
+      table.redTable tfoot .links a {
+        display: inline-block;
+        background: #FFFFFF;
+        color: #1a0575;;
+        padding: 2px 8px;
+        border-radius: 5px;
+      }
+
+      /* Search Box Styling */
+      .search-container {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+
+      .search-container input {
+        padding: 8px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #D4D4D4;
+        width: 300px;
+      }
+
+      .search-container button {
+        padding: 8px 16px;
+        font-size: 16px;
+        background-color: #0d4dfd;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .search-container button:hover {
+        background-color: #2fa8ee;
+      }
+
+      /* Heading Styling */
+      h3 {
+        font-size: 50px;
+        text-align: center;
+        background-color: #1a0575;;
+        color: white;
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+
+      /* Additional Page Styling */
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #FAFAFA;
+        background-image: url("{% static 'images/libraryuserimg-.jpg' %}");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .container {
+        width: 100%;
+        margin: 100px auto;
+        padding: 40px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        margin-bottom: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    {% include "library/navbaradmin.html" %}
+    
+    <div class="container">
+      <!-- Heading -->
+      <h3>Available Books in Library</h3>
+      
+      <!-- Search Functionality -->
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by Book Name..." onkeyup="filterTable()">
+        <button onclick="filterTable()">Search</button>
+      </div>
+
+      <!-- Table Display -->
+      {% if books %}
+        <table class="redTable">
+          <thead>
+            <tr>
+              <th>Book Name</th>
+              <th>ISBN</th>
+              <th>Author</th>
+              <th>Category</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td colspan="4">
+                <div class="links"></div>
+              </td>
+            </tr>
+          </tfoot>
+          <tbody>
+            {% for book in books %}
+              <tr>
+                <td>{{ book.name }}</td>
+                <td>{{ book.isbn }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.category }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <h1>No Books Available in the Library</h1>
+      {% endif %}
+    </div>
+
+    {% include "library/footer.html" %}
+
+    <script>
+      function filterTable() {
+        const searchInput = document.getElementById("searchInput").value.toLowerCase();
+        const table = document.getElementsByClassName("redTable")[0];
+        const rows = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < rows.length; i++) {
+          const cell = rows[i].getElementsByTagName("td")[0]; // Check the "Book Name" column
+          if (cell) {
+            const bookName = cell.textContent || cell.innerText;
+            if (bookName.toLowerCase().indexOf(searchInput) > -1) {
+              rows[i].style.display = "";
+            } else {
+              rows[i].style.display = "none";
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BookEase - Admin Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+      body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        background: url("{% static 'images/clickimage.jpeg' %}") no-repeat center center fixed;
+        background-size: cover;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+		
+      }
+      .form-container {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        max-width: 400px;
+        width: 90%;
+        text-align: center;
+        margin-bottom: 50px; /* Space between the form and the footer */
+      }
+      .form-container h2 {
+        margin-bottom: 20px;
+        font-size: 1.8em;
+        color: #00d4ff;
+      }
+      .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 0.9em;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+      }
+      input:focus {
+        outline: none;
+        box-shadow: 0 0 8px #00d4ff;
+      }
+      .btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 1.1em;
+        font-weight: bold;
+        color: #fff;
+        background: linear-gradient(45deg, #ff005a, #ff8500);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .btn:hover {
+        background: linear-gradient(45deg, #ff8500, #ff005a);
+      }
+      .text-center {
+        margin-top: 20px;
+        font-size: 0.9em;
+      }
+      .text-center a {
+        color: #00d4ff;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .text-center a:hover {
+        text-decoration: underline;
+      }
+      .alert {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #fff;
+        background-color: #fd5203;
+        margin-bottom: 10px;
+        text-align: center;
+        padding: 15px;
+        width: 35%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 15px;
+		
+      }
+      /* Footer style */
+      footer {
+		height: 20%;
+        width: 100%;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    {% include "library/navbar.html" %}
+    <br><br>
+
+    <div class="alert">
+      Login As Admin!
+    </div>
+
+    <div class="form-container">
+      <h2>ADMIN LOGIN</h2>
+      <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+          <label>{{ field.label_tag }}</label>
+          {{ field }}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn">Login</button>
+      </form>
+      <div class="text-center">
+        Do not have an account? <a href="adminsignup">Signup here</a>
+      </div>
+    </div>
+
+    {% include "library/footer.html" %}
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <title>BookEase - About Us</title>
+
+    <style>
+      /* Fade-In Animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Background Image and Styling */
+      body {
+        background: url("{% static 'images/lib1.png' %}") no-repeat center center fixed;
+        background-size: cover;
+        color: #fff;
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .jumbotron {
+        background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+        color: #fff;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        max-width: 100%; /* Optionally limit the width */
+        height: 650px; /* Set a specific height for the jumbotron */
+        animation: fadeIn 1.5s ease-in-out; /* Apply fadeIn animation */
+      }
+
+      .jumbotron h1 {
+        text-align: center;
+        font-size: 3rem;
+      }
+
+      .alert {
+        margin: 0px;
+        font-size: 1.5rem;
+      }
+
+      .lead {
+        font-size: 1.25rem;
+        text-align: center;
+      }
+
+      .btn-primary {
+        background-color: #007bff;
+        border: none;
+        font-size: 18px;
+        padding: 12px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: #0056b3;
+        cursor: pointer;
+      }
+
+      .container-fluid {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 767px) {
+        .jumbotron h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    {% include "library/navbar.html" %}
+
+    <div class="container-fluid">
+      <div class="jumbotron">
+        <h1 class="display-4">Hello, Reader!</h1>
+        <p class="lead">Welcome to our Library Management System, a powerful and user-friendly platform developed by Ashish Yadav. This system was created with the goal of simplifying the process of managing and accessing library resources, ensuring that both users and administrators have a smooth and efficient experience.
+
+          Designed to bridge the gap between users and the wealth of knowledge housed within the library, our system offers easy access to a variety of resources, including books, journals, and other educational materials. The platform allows users to search, borrow, and return materials effortlessly, ensuring that learning continues uninterrupted, no matter where they are.
+          
+          Our service is tailored to meet the needs of both admins and users. For admins, the system streamlines tasks like managing inventory, tracking usage, and handling reservations. For users, it makes discovering and accessing the right resources quick and simple, so they can focus on their tasks rather than dealing with cumbersome library processes.
+
+          With the integration of modern technology, this platform ensures that every user, whether a user seeking reference materials or an admin managing the resources, can enjoy a seamless experience that is intuitive, efficient, and reliable.</p>
+                           
+          <h1 class="display-4">About the Developer</h1>
+          <p class="lead">Ashish Yadav is a passionate AI-ML Engineering graduate who developed this Library Management System to streamline the process of managing library resources. Ashish believes in the power of technology to make education more accessible and aims to empower people through innovative, easy-to-use solutions. </p>
+          <p class="lead">
+            To know more about Ashish and explore his work, visit his <a href="https://ashishbyadav-portfolio.vercel.app/" target="_blank">Portfolio</a>.
+          </p>
+        <hr class="my-2">
+        <p>Explore our Website.</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="/" role="button">HOME</a>
+        </p>
+      </div>
+    </div>
+
+    {% include "library/footer.html" %}
+
+  </body>
+</html>

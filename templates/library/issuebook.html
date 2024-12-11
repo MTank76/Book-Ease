@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BookEase - Issue Book</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <style>
+      body {
+        color: #4A4A8A;
+        background: linear-gradient(135deg, #b6bde7, #ffffff);
+        font-family: 'Roboto', sans-serif;
+      }
+      .form-control {
+        border-color: #ddd;
+        min-height: 41px;
+        box-shadow: none !important;
+        transition: border-color 0.3s ease-in-out;
+      }
+      .form-control:focus {
+        border-color: #5cd3b4;
+        box-shadow: 0 0 8px rgba(92, 211, 180, 0.5);
+      }
+      .signup-form {
+        width: 100%;
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.8s ease-in-out;
+      }
+      .signup-form h2 {
+        color: #333;
+        margin-bottom: 30px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      .signup-form .btn {
+        font-size: 16px;
+        font-weight: bold;
+        background: #4A4A8A;
+        border: none;
+        color: #fff;
+        transition: background 0.3s;
+      }
+      .signup-form .btn:hover {
+        background: #41cba9;
+        color: #fff;
+      }
+      .signup-form a {
+        color: #4A4A8A;
+        text-decoration: underline;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+      .signup-form a:hover {
+        color: #41cba9;
+        text-decoration: none;
+      }
+      .text-center {
+        margin-top: 20px;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    {% include "library/navbaradmin.html" %}
+    <div class="container">
+      <div class="text-center py-4">
+        <h3 class="alert alert-success d-inline-block">Issue Book to Users!</h3>
+      </div>
+      <div class="signup-form">
+        <form method="post" class="form-horizontal">
+          <center><h2>Issue Book</h2></center>
+          {% csrf_token %}
+          {% for field in form %}
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label text-right">{{ field.label_tag }}</label>
+            <div class="col-sm-8">
+              {{ field }}
+            </div>
+          </div>
+          {% endfor %}
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary btn-lg">Issue</button>
+          </div>
+        </form>
+        <div class="text-center">View Issued Books to Users <a href="viewissuedbook">Click here</a></div>
+      </div>
+    </div>
+    {% include "library/footer.html" %}
+  </body>
+</html>

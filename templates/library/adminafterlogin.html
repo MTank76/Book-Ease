@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookEase - Admin Dashboard</title>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to right, #1d2671, #c33764);
+        color: #fff;
+      }
+
+      .welcome-section {
+        margin: 20px auto;
+        padding: 30px;
+        border-radius: 15px;
+        background-color: rgba(255, 255, 255, 0.9);
+        color: #333;
+        max-width: 800px;
+        text-align: center;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        transform: translateY(50px);
+        opacity: 0;
+        animation: fadeInSlide 1.5s ease-out forwards;
+      }
+
+      @keyframes fadeInSlide {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .welcome-section h1,
+      .welcome-section h2 {
+        font-weight: bold;
+      }
+
+      .welcome-section h1 {
+        color: #d9534f;
+        margin-bottom: 15px;
+      }
+
+      .welcome-section h2 {
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      .welcome-section p {
+        color: #555;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .welcome-section h3 {
+        color: #d9534f;
+        margin-bottom: 10px;
+      }
+
+      .welcome-section .options {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .welcome-section .options a {
+        display: inline-block;
+        margin: 10px;
+        padding: 15px 25px;
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 25px;
+        background: linear-gradient(135deg, #f093fb, #f5576c);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .welcome-section .options a:hover {
+        background: linear-gradient(135deg, #f5576c, #f093fb);
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    {% include "library/navbaradmin.html" %}
+    <br>
+    <br>
+    <div class="welcome-section">
+      <h1 class="display-5 text-danger">Hello {{user.first_name}}!</h1>
+      <h2>Welcome to the Admin Dashboard!</h2>
+      <p>
+        We are thrilled to have you on board! As an admin, you hold the key to an array of powerful tools designed to make managing and overseeing library operations smooth and efficient.
+      </p>
+      <hr>
+      <h3>Getting Started</h3>
+      <p>
+        To access these features, please log in or sign up using the form below. Only authorized administrators are permitted to enter the admin dashboard. 
+        If you're not an admin, we kindly request you to head over to the user page for features tailored to your role.
+      </p>
+      <hr>
+      <h3>Important Notice</h3>
+      <p>
+        This login page is strictly reserved for admins. If you are a non-admin user, please proceed to the user page to explore your specific functionalities.
+        Any attempts to gain unauthorized access to this section will be denied and logged for security purposes.
+      </p>
+      <hr>
+      <h2>Explore The Library's Toolbox :)</h2>
+
+      <div class="options">
+        <a href="addbook" class="btn">Add Book to Library</a>
+        <a href="viewbook" class="btn">View Available Books</a>
+        <a href="issuebook" class="btn">Issue New Book</a>
+        <a href="viewissuedbook" class="btn">View Issued Books</a>
+        <a href="viewstudent" class="btn">View Students</a>
+      </div>
+    </div>
+    {% include "library/footer.html" %}
+  </body>
+</html>

@@ -1,0 +1,208 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>BookEase - Issued Books</title>
+    <style media="screen">
+      /* Table Styling */
+      table.redTable {
+        border: 2px solid #1a0575;
+        background-color: #fefefe;
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+      }
+
+      table.redTable td, table.redTable th {
+        border: 1.2px solid #D4D4D4;
+        padding: 12px;
+        font-family: 'Arial', sans-serif;
+      }
+
+      table.redTable tbody td {
+        font-size: 17px;
+      }
+
+      table.redTable tr:nth-child(even) {
+        background: #b3cce9;
+      }
+
+      table.redTable thead {
+        background: #1a0575;
+        color: white;
+      }
+
+      table.redTable thead th {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      table.redTable thead th:first-child {
+        border-left: none;
+      }
+
+      table.redTable tfoot {
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+        background: #1a0575;
+      }
+
+      table.redTable tfoot td {
+        font-size: 14px;
+      }
+
+      table.redTable tfoot .links {
+        text-align: right;
+      }
+
+      table.redTable tfoot .links a {
+        display: inline-block;
+        background: #1a0575;
+        color: white;
+        padding: 5px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+
+      /* Search Box Styling */
+      .search-container {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .search-container input {
+        padding: 8px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #D4D4D4;
+        width: 300px;
+      }
+
+      .search-container button {
+        padding: 8px 16px;
+        font-size: 16px;
+        background-color: #0d4dfd;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .search-container button:hover {
+        background-color: #2fa8ee;
+      }
+
+      /* Heading Styling */
+      h3 {
+        font-size: 50px;
+        text-align: center;
+        background-color:#1a0575;
+        color: white;
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+
+      /* Additional Page Styling */
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #FAFAFA;
+        background-image: url("{% static 'images\libraryuserimg-.jpg' %}"); 
+        background-size: cover;
+        background-position: center;
+      }
+
+      .container {
+        width: 80%;
+        margin: 100 ;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8); 
+        border-radius: 10px;
+        margin-bottom: 350px;
+      }
+      
+  
+    </style>
+  </head>
+  <body>
+    {% include "library/navbaradmin.html" %}
+    <div class="container">
+      <!-- Heading -->
+      <h3>Issued Books to Users</h3>
+
+      <!-- Search Functionality -->
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by User Name..." onkeyup="filterTable()">
+        <button onclick="filterTable()">Search</button>
+      </div>
+
+      <!-- Table Display -->
+      {% if li %}
+        <table class="redTable" id="booksTable">
+          <thead>
+            <tr>
+              <th>User Name</th>
+              <th>User Enrollment</th>
+              <th>Book Name</th>
+              <th>Book Author</th>
+              <th>Issue Date</th>
+              <th>Expiry Date</th>
+              <th>Fine</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td colspan="7">
+                <div class="links"></div>
+              </td>
+            </tr>
+          </tfoot>
+          <tbody>
+            {% for t in li %}
+              <tr>
+                <td>{{ t.0 }}</td>
+                <td>{{ t.1 }}</td>
+                <td>{{ t.2 }}</td>
+                <td>{{ t.3 }}</td>
+                <td>{{ t.4 }}</td>
+                <td>{{ t.5 }}</td>
+                <td>{{ t.6 }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <h1>No books issued</h1>
+      {% endif %}
+    </div>
+
+    {% include "library/footer.html" %}
+
+    <script>
+      function filterTable() {
+        const searchInput = document.getElementById("searchInput").value.toLowerCase();
+        const table = document.getElementById("booksTable");
+        const rows = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < rows.length; i++) {
+          const cell = rows[i].getElementsByTagName("td")[0]; // Check the "Student Name" column
+          if (cell) {
+            const name = cell.textContent || cell.innerText;
+            if (name.toLowerCase().indexOf(searchInput) > -1) {
+              rows[i].style.display = "";
+            } else {
+              rows[i].style.display = "none";
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

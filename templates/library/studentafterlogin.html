@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookEase - User Dashboard</title>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        color: #fff;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 40px 20px;
+        animation: fadeIn 1.5s ease-in-out;
+      }
+
+      .welcome-section {
+        flex: 3;
+        padding: 30px;
+        text-align: center;
+        background: #ffffff;
+        color: #333;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        max-width: 1000px;
+        width: 100%;
+        transform: translateY(50px);
+        opacity: 0;
+        animation: slideIn 1.5s ease-out forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .welcome-section h2 {
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 15px;
+        font-size: 2rem;
+      }
+
+      .welcome-section p {
+        color: #555;
+        font-size: 20px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .welcome-section h3 {
+        color: #d9534f;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .options {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .options a {
+        display: inline-block;
+        margin: 10px;
+        padding: 15px 25px;
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        background: linear-gradient(135deg, #0a06f0, #02d6fc);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .options a:hover {
+        background: linear-gradient(135deg, #02d6fc, #0a06f0);
+        transform: scale(1.1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    {% include "library/navbarstudent.html" %}
+    <div class="container">
+      <div class="welcome-section">
+        <h2>Welcome to the User Dashboard!</h2>
+        <h3 class="display-4 text-info">Hello {{user.first_name}}!</h3>
+        <p>
+          Welcome to your user dashboard! As a user, you have access to a range of features to help you manage your library activities with ease and convenience.
+        </p>
+        <hr>
+        <h3>Getting Started</h3>
+        <p>
+          Explore all the options available to you, including viewing your borrowed books, checking fines, and more. To access these features, simply log in using the form below. 
+          If you're not logged in, please do so to unlock full access to your personalized library tools.
+        </p>
+        <hr>
+        <h3>Important Notice</h3>
+        <p>
+          This dashboard is designed specifically for user access. If you're an admin, please use the admin login to access your designated admin tools. Unauthorized access will be monitored for security purposes.
+        </p>
+        <hr>
+        <br>
+        <h2 class="text-secondary">Explore The Library's Book-Counter :)</h2>
+        <div class="options">
+          <a href="viewissuedbookbystudent" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
+            View Issued Books
+          </a>
+        </div>
+      </div>
+    </div>
+    {% include "library/footer.html" %}
+  </body>
+</html>

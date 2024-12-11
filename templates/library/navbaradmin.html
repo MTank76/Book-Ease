@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>BookEase - ADMIN</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+   
+   /* Global Styling */
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f1f5f8;
+        padding-top: 60px; /* Adjusted for fixed navbar */
+    }
+
+    /* Navbar Styling */
+    .navbar {
+        background-color: #1E2A3A;
+        border-radius: 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+        display: flex;
+        padding: 0 15px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Navbar Brand (Center) */
+    .navbar-brand {
+        font-size: 24px;
+        color: #f1f5f8;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color 0.3s ease;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .navbar-brand:hover {
+        color: #3498db;
+    }
+
+    /* Navbar Items (Left and Right) */
+    .navbar-nav {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-nav.left {
+        margin-left: 0;
+    }
+
+    .navbar-nav.right {
+        margin-right: 0;
+    }
+
+    .navbar-nav .nav-item {
+        padding: 12px 18px;
+        font-size: 18px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+    }
+
+    /* Hover Effect - Just Text Lights Up */
+    .navbar-nav .nav-item:hover,
+    .navbar-nav .nav-item.active {
+        color: #3498db !important;
+        text-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    }
+
+    .navbar-nav .nav-item.dropdown > .nav-link:hover {
+    color: #3498db !important; /* Blue color */
+    text-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Optional: subtle glow effect */
+    transition: color 0.3s ease;
+    }
+
+    /* Toggler */
+    .navbar-toggler {
+        border-color: #3498db;
+    }
+
+    .navbar-toggler-icon {
+        background-color: #3498db;
+    }
+
+    /* Navbar Collapse */
+    .navbar-collapse {
+        justify-content: space-between;
+    }
+
+    /* Change dropdown hover text color to blue */
+    .dropdown-item:hover {
+         color: #3498db; /* Blue text */
+        background-color: transparent; /* Ensure background stays the same */
+         transition: color 0.3s ease;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+        .navbar-nav {
+            text-align: center;
+        }
+        .navbar-brand {
+            position: static;
+            transform: none;
+            margin: 0 auto;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .navbar-nav .nav-item {
+            font-size: 16px;
+            padding: 10px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        <!-- Centered Library Management brand -->
+        <a href="/" class="navbar-brand">BӨӨK ΣΛƧΣ</a>
+
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <!-- Left navbar items -->
+            <div class="navbar-nav left">
+                <a href="/" class="nav-item nav-link">Home</a>
+
+                <!-- Book Dropdown -->
+                <div class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Book</a>
+                  <div class="dropdown-menu">
+                    <a href="addbook" class="dropdown-item">Add Book</a>
+                    <a href="viewbook" class="dropdown-item">View Book</a>
+                  </div>
+                </div>
+
+                <!-- Issue Book Dropdown -->
+                <div class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Issue Book</a>
+                  <div class="dropdown-menu">
+                    <a href="issuebook" class="dropdown-item">Issue New Book</a>
+                    <a href="viewissuedbook" class="dropdown-item">View Issued Book</a>
+                  </div>
+                </div>
+
+                <!-- Student Dropdown -->
+                <div class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Student</a>
+                  <div class="dropdown-menu">
+                    <a href="viewstudent" class="dropdown-item">View User</a>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Right navbar items -->
+            <div class="navbar-nav right">
+                <a href="logout" class="nav-item nav-link">LOGOUT</a>
+                <a href="/aboutus" class="nav-item nav-link">About Us</a>
+                <a href="contactus" class="nav-item nav-link">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>
